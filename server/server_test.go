@@ -91,12 +91,12 @@ func TestRepoPrefixMatches(t *testing.T) {
 	require.NoError(t, err)
 
 	// the httpstore doesn't actually delete all, so we do it manually
-	req, err := http.NewRequest("DELETE", url, nil)
-	require.NoError(t, err)
-	res, err := http.DefaultTransport.RoundTrip(req)
-	require.NoError(t, err)
-	defer res.Body.Close()
-	require.Equal(t, http.StatusOK, res.StatusCode)
+	// req, err := http.NewRequest("DELETE", url, nil)
+	// require.NoError(t, err)
+	// res, err := http.DefaultTransport.RoundTrip(req)
+	// require.NoError(t, err)
+	// defer res.Body.Close()
+	// require.Equal(t, http.StatusOK, res.StatusCode)
 }
 
 func TestRepoPrefixDoesNotMatch(t *testing.T) {

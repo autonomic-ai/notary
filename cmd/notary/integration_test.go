@@ -440,135 +440,135 @@ func TestClientTUFInteraction(t *testing.T) {
 	require.Contains(t, output, target2)
 }
 
-func TestClientDeleteTUFInteraction(t *testing.T) {
-	// -- setup --
-	setUp(t)
+// func TestClientDeleteTUFInteraction(t *testing.T) {
+// 	// -- setup --
+// 	setUp(t)
 
-	tempDir := tempDirWithConfig(t, "{}")
-	defer os.RemoveAll(tempDir)
+// 	tempDir := tempDirWithConfig(t, "{}")
+// 	defer os.RemoveAll(tempDir)
 
-	server := setupServer()
-	defer server.Close()
+// 	server := setupServer()
+// 	defer server.Close()
 
-	tempFile, err := ioutil.TempFile("", "targetfile")
-	require.NoError(t, err)
-	tempFile.Close()
-	defer os.Remove(tempFile.Name())
+// 	tempFile, err := ioutil.TempFile("", "targetfile")
+// 	require.NoError(t, err)
+// 	tempFile.Close()
+// 	defer os.Remove(tempFile.Name())
 
-	// Setup certificate
-	certFile, err := ioutil.TempFile("", "pemfile")
-	require.NoError(t, err)
-	cert, _, _ := generateCertPrivKeyPair(t, "gun", data.ECDSAKey)
-	_, err = certFile.Write(utils.CertToPEM(cert))
-	require.NoError(t, err)
-	defer os.Remove(certFile.Name())
+// 	// Setup certificate
+// 	certFile, err := ioutil.TempFile("", "pemfile")
+// 	require.NoError(t, err)
+// 	cert, _, _ := generateCertPrivKeyPair(t, "gun", data.ECDSAKey)
+// 	_, err = certFile.Write(utils.CertToPEM(cert))
+// 	require.NoError(t, err)
+// 	defer os.Remove(certFile.Name())
 
-	var (
-		output string
-		target = "helloIamanotarytarget"
-	)
-	// -- tests --
+// 	var (
+// 		output string
+// 		target = "helloIamanotarytarget"
+// 	)
+// 	// -- tests --
 
-	// init repo
-	_, err = runCommand(t, tempDir, "-s", server.URL, "init", "gun")
-	require.NoError(t, err)
+// 	// init repo
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "init", "gun")
+// 	require.NoError(t, err)
 
-	// add a target
-	_, err = runCommand(t, tempDir, "add", "gun", target, tempFile.Name())
-	require.NoError(t, err)
+// 	// add a target
+// 	_, err = runCommand(t, tempDir, "add", "gun", target, tempFile.Name())
+// 	require.NoError(t, err)
 
-	// check status - see target
-	output, err = runCommand(t, tempDir, "status", "gun")
-	require.NoError(t, err)
-	require.True(t, strings.Contains(output, target))
+// 	// check status - see target
+// 	output, err = runCommand(t, tempDir, "status", "gun")
+// 	require.NoError(t, err)
+// 	require.True(t, strings.Contains(output, target))
 
-	// publish repo
-	_, err = runCommand(t, tempDir, "-s", server.URL, "publish", "gun")
-	require.NoError(t, err)
+// 	// publish repo
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "publish", "gun")
+// 	require.NoError(t, err)
 
-	// list repo - see target
-	output, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
-	require.NoError(t, err)
-	require.True(t, strings.Contains(string(output), target))
+// 	// list repo - see target
+// 	output, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
+// 	require.NoError(t, err)
+// 	require.True(t, strings.Contains(string(output), target))
 
-	// add a delegation and publish
-	_, err = runCommand(t, tempDir, "delegation", "add", "gun", "targets/delegation", certFile.Name())
-	require.NoError(t, err)
-	_, err = runCommand(t, tempDir, "-s", server.URL, "publish", "gun")
-	require.NoError(t, err)
+// 	// add a delegation and publish
+// 	_, err = runCommand(t, tempDir, "delegation", "add", "gun", "targets/delegation", certFile.Name())
+// 	require.NoError(t, err)
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "publish", "gun")
+// 	require.NoError(t, err)
 
-	// list delegations - see role
-	output, err = runCommand(t, tempDir, "-s", server.URL, "delegation", "list", "gun")
-	require.NoError(t, err)
-	require.True(t, strings.Contains(string(output), "targets/delegation"))
+// 	// list delegations - see role
+// 	output, err = runCommand(t, tempDir, "-s", server.URL, "delegation", "list", "gun")
+// 	require.NoError(t, err)
+// 	require.True(t, strings.Contains(string(output), "targets/delegation"))
 
-	// Delete the repo metadata locally, so no need for server URL
-	_, err = runCommand(t, tempDir, "delete", "gun")
-	require.NoError(t, err)
-	assertLocalMetadataForGun(t, tempDir, "gun", false)
+// 	// Delete the repo metadata locally, so no need for server URL
+// 	_, err = runCommand(t, tempDir, "delete", "gun")
+// 	require.NoError(t, err)
+// 	assertLocalMetadataForGun(t, tempDir, "gun", false)
 
-	// list repo - see target still because remote data exists
-	output, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
-	require.NoError(t, err)
-	require.True(t, strings.Contains(string(output), target))
+// 	// list repo - see target still because remote data exists
+// 	output, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
+// 	require.NoError(t, err)
+// 	require.True(t, strings.Contains(string(output), target))
 
-	// list delegations - see role because remote data still exists
-	output, err = runCommand(t, tempDir, "-s", server.URL, "delegation", "list", "gun")
-	require.NoError(t, err)
-	require.True(t, strings.Contains(string(output), "targets/delegation"))
+// 	// list delegations - see role because remote data still exists
+// 	output, err = runCommand(t, tempDir, "-s", server.URL, "delegation", "list", "gun")
+// 	require.NoError(t, err)
+// 	require.True(t, strings.Contains(string(output), "targets/delegation"))
 
-	// Trying to delete the repo with the remote flag fails if it's given a badly formed URL
-	_, err = runCommand(t, tempDir, "-s", "//invalidURLType", "delete", "gun", "--remote")
-	require.Error(t, err)
-	// since the connection fails to parse the URL before we can delete anything, local data should exist
-	assertLocalMetadataForGun(t, tempDir, "gun", true)
+// 	// Trying to delete the repo with the remote flag fails if it's given a badly formed URL
+// 	_, err = runCommand(t, tempDir, "-s", "//invalidURLType", "delete", "gun", "--remote")
+// 	require.Error(t, err)
+// 	// since the connection fails to parse the URL before we can delete anything, local data should exist
+// 	assertLocalMetadataForGun(t, tempDir, "gun", true)
 
-	// Trying to delete the repo with the remote flag fails if it's given a well-formed URL that doesn't point to a server
-	_, err = runCommand(t, tempDir, "-s", "https://invalid-server", "delete", "gun", "--remote")
-	require.Error(t, err)
-	require.IsType(t, nstorage.ErrOffline{}, err)
-	// In this case, local notary metadata does not exist since local deletion operates first if we have a valid transport
-	assertLocalMetadataForGun(t, tempDir, "gun", false)
+// 	// Trying to delete the repo with the remote flag fails if it's given a well-formed URL that doesn't point to a server
+// 	_, err = runCommand(t, tempDir, "-s", "https://invalid-server", "delete", "gun", "--remote")
+// 	require.Error(t, err)
+// 	require.IsType(t, nstorage.ErrOffline{}, err)
+// 	// In this case, local notary metadata does not exist since local deletion operates first if we have a valid transport
+// 	assertLocalMetadataForGun(t, tempDir, "gun", false)
 
-	// Delete the repo remotely and locally, pointing to the correct server
-	_, err = runCommand(t, tempDir, "-s", server.URL, "delete", "gun", "--remote")
-	require.NoError(t, err)
-	assertLocalMetadataForGun(t, tempDir, "gun", false)
-	_, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
-	require.Error(t, err)
-	require.IsType(t, client.ErrRepositoryNotExist{}, err)
+// 	// Delete the repo remotely and locally, pointing to the correct server
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "delete", "gun", "--remote")
+// 	require.NoError(t, err)
+// 	assertLocalMetadataForGun(t, tempDir, "gun", false)
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
+// 	require.Error(t, err)
+// 	require.IsType(t, client.ErrRepositoryNotExist{}, err)
 
-	// Silent success on extraneous deletes
-	_, err = runCommand(t, tempDir, "-s", server.URL, "delete", "gun", "--remote")
-	require.NoError(t, err)
-	assertLocalMetadataForGun(t, tempDir, "gun", false)
-	_, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
-	require.Error(t, err)
-	require.IsType(t, client.ErrRepositoryNotExist{}, err)
+// 	// Silent success on extraneous deletes
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "delete", "gun", "--remote")
+// 	require.NoError(t, err)
+// 	assertLocalMetadataForGun(t, tempDir, "gun", false)
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
+// 	require.Error(t, err)
+// 	require.IsType(t, client.ErrRepositoryNotExist{}, err)
 
-	// Now check that we can re-publish the same repo
-	// init repo
-	_, err = runCommand(t, tempDir, "-s", server.URL, "init", "gun")
-	require.NoError(t, err)
+// 	// Now check that we can re-publish the same repo
+// 	// init repo
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "init", "gun")
+// 	require.NoError(t, err)
 
-	// add a target
-	_, err = runCommand(t, tempDir, "add", "gun", target, tempFile.Name())
-	require.NoError(t, err)
+// 	// add a target
+// 	_, err = runCommand(t, tempDir, "add", "gun", target, tempFile.Name())
+// 	require.NoError(t, err)
 
-	// check status - see target
-	output, err = runCommand(t, tempDir, "status", "gun")
-	require.NoError(t, err)
-	require.True(t, strings.Contains(output, target))
+// 	// check status - see target
+// 	output, err = runCommand(t, tempDir, "status", "gun")
+// 	require.NoError(t, err)
+// 	require.True(t, strings.Contains(output, target))
 
-	// publish repo
-	_, err = runCommand(t, tempDir, "-s", server.URL, "publish", "gun")
-	require.NoError(t, err)
+// 	// publish repo
+// 	_, err = runCommand(t, tempDir, "-s", server.URL, "publish", "gun")
+// 	require.NoError(t, err)
 
-	// list repo - see target
-	output, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
-	require.NoError(t, err)
-	require.True(t, strings.Contains(string(output), target))
-}
+// 	// list repo - see target
+// 	output, err = runCommand(t, tempDir, "-s", server.URL, "list", "gun")
+// 	require.NoError(t, err)
+// 	require.True(t, strings.Contains(string(output), target))
+// }
 
 func assertLocalMetadataForGun(t *testing.T, configDir, gun string, shouldExist bool) {
 	for _, role := range data.BaseRoles {
