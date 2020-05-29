@@ -201,16 +201,16 @@ func RootHandler(ctx context.Context, ac auth.AccessController, trust signed.Cry
 		authWrapper,
 		repoPrefixes,
 	))
-	r.Methods("DELETE").Path("/v2/{gun:[^*]+}/_trust/tuf/").Handler(CreateHandler(
-		"DeleteTUF",
-		handlers.DeleteHandler,
-		notFoundError,
-		false,
-		nil,
-		[]string{"*"},
-		authWrapper,
-		repoPrefixes,
-	))
+	// r.Methods("DELETE").Path("/v2/{gun:[^*]+}/_trust/tuf/").Handler(CreateHandler(
+	// 	"DeleteTUF",
+	// 	handlers.DeleteHandler,
+	// 	notFoundError,
+	// 	false,
+	// 	nil,
+	// 	[]string{"*"},
+	// 	authWrapper,
+	// 	repoPrefixes,
+	// ))
 	r.Methods("GET").Path("/v2/{gun:[^*]+}/_trust/changefeed").Handler(CreateHandler(
 		"Changefeed",
 		handlers.Changefeed,
