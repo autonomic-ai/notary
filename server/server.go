@@ -102,7 +102,7 @@ func Run(ctx context.Context, conf Config) error {
 		return err
 	}
 
-	logrus.Info("Starting internal server on ", conf.Addr)
+	logrus.Info("Starting internal server on ", conf.AddrInternal)
 	err = svrInternal.Serve(lsnrInternal)
 	if err != nil {
 		return err
