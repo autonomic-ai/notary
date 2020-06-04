@@ -46,6 +46,21 @@ type Config struct {
 	CurrentCacheControlConfig    utils.CacheControlConfig
 }
 
+//startServer creates and starts a server at the provided address with the specified handler to handle requests
+func startServer(svr *http.Server, lsnr net.Listener) chan error {
+	result := make(chan error)
+
+	go func() {
+		err := svr.Serve(lsnr)
+		if err != nil && err != http.ErrServerClosed {
+			result <- err
+			return
+		}
+		result <- nil
+	}()
+	return result
+}
+
 // Run sets up and starts an internal server and a TLS server that can be
 // cancelled using the given configuration. The context it is passed is
 // the context it should use directly for the TLS server, and generate
@@ -97,15 +112,22 @@ func Run(ctx context.Context, conf Config) error {
 			conf.RepoPrefixes),
 	}
 	logrus.Info("Starting app server on ", conf.Addr)
-	err = svr.Serve(lsnr)
-	if err != nil {
-		return err
-	}
+	appSvrErrChan := startServer(&svr, lsnr)
 
 	logrus.Info("Starting internal server on ", conf.AddrInternal)
-	err = svrInternal.Serve(lsnrInternal)
-	if err != nil {
-		return err
+	internalSvrErrChan := startServer(&svrInternal, lsnrInternal)
+
+	select {
+	case err := <-appSvrErrChan:
+		if err != nil {
+			return err
+		}
+		logrus.Info("Started app server")
+	case err := <-internalSvrErrChan:
+		if err != nil {
+			return err
+		}
+		logrus.Info("Started internal server")
 	}
 
 	return err
