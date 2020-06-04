@@ -36,6 +36,7 @@ func prometheusOpts(operation string) prometheus.SummaryOpts {
 // Config tells Run how to configure a server
 type Config struct {
 	Addr                         string
+	AddrInternal                 string
 	TLSConfig                    *tls.Config
 	Trust                        signed.CryptoService
 	AuthMethod                   string
@@ -45,10 +46,25 @@ type Config struct {
 	CurrentCacheControlConfig    utils.CacheControlConfig
 }
 
-// Run sets up and starts a TLS server that can be cancelled using the
-// given configuration. The context it is passed is the context it should
-// use directly for the TLS server, and generate children off for requests
+// Run sets up and starts an internal server and a TLS server that can be
+// cancelled using the given configuration. The context it is passed is
+// the context it should use directly for the TLS server, and generate
+// children off for requests
 func Run(ctx context.Context, conf Config) error {
+	tcpAddrInternal, err := net.ResolveTCPAddr("tcp", conf.AddrInternal)
+	if err != nil {
+		return err
+	}
+	var lsnrInternal net.Listener
+	lsnrInternal, err = net.ListenTCP("tcp", tcpAddrInternal)
+	if err != nil {
+		return err
+	}
+	svrInternal := http.Server{
+		Addr:    conf.AddrInternal,
+		Handler: InternalHandler(),
+	}
+
 	tcpAddr, err := net.ResolveTCPAddr("tcp", conf.Addr)
 	if err != nil {
 		return err
@@ -58,12 +74,10 @@ func Run(ctx context.Context, conf Config) error {
 	if err != nil {
 		return err
 	}
-
 	if conf.TLSConfig != nil {
 		logrus.Info("Enabling TLS")
 		lsnr = tls.NewListener(lsnr, conf.TLSConfig)
 	}
-
 	var ac auth.AccessController
 	if conf.AuthMethod == "token" {
 		authOptions, ok := conf.AuthOpts.(map[string]interface{})
@@ -75,7 +89,6 @@ func Run(ctx context.Context, conf Config) error {
 			return err
 		}
 	}
-
 	svr := http.Server{
 		Addr: conf.Addr,
 		Handler: RootHandler(
@@ -83,10 +96,17 @@ func Run(ctx context.Context, conf Config) error {
 			conf.ConsistentCacheControlConfig, conf.CurrentCacheControlConfig,
 			conf.RepoPrefixes),
 	}
-
-	logrus.Info("Starting on ", conf.Addr)
-
+	logrus.Info("Starting app server on ", conf.Addr)
 	err = svr.Serve(lsnr)
+	if err != nil {
+		return err
+	}
+
+	logrus.Info("Starting internal server on ", conf.Addr)
+	err = svrInternal.Serve(lsnrInternal)
+	if err != nil {
+		return err
+	}
 
 	return err
 }
@@ -125,6 +145,14 @@ func CreateHandler(operationName string, serverHandler utils.ContextHandler, err
 	}
 	wrapped = filterImagePrefixes(repoPrefixes, errorIfGUNInvalid, wrapped)
 	return prometheus.InstrumentHandlerWithOpts(prometheusOpts(operationName), wrapped)
+}
+
+// InternalHandler returns the handler that routes the metrics and health endpoints
+func InternalHandler() http.Handler {
+	r := mux.NewRouter()
+	r.Methods("GET").Path("/_notary_server/health").HandlerFunc(health.StatusHandler)
+	r.Methods("GET").Path("/metrics").Handler(prometheus.Handler())
+	return r
 }
 
 // RootHandler returns the handler that routes all the paths from / for the
@@ -231,8 +259,6 @@ func RootHandler(ctx context.Context, ac auth.AccessController, trust signed.Cry
 		authWrapper,
 		repoPrefixes,
 	))
-	r.Methods("GET").Path("/_notary_server/health").HandlerFunc(health.StatusHandler)
-	r.Methods("GET").Path("/metrics").Handler(prometheus.Handler())
 	r.Methods("GET", "POST", "PUT", "HEAD", "DELETE").Path("/{other:.*}").Handler(
 		authWrapper(handlers.NotFoundHandler))
 
