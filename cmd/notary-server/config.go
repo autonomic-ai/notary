@@ -40,6 +40,16 @@ func getRequiredGunPrefixes(configuration *viper.Viper) ([]string, error) {
 	return prefixes, nil
 }
 
+// get the address for the internal server
+func getAddrInternal(configuration *viper.Viper) (string, error) {
+	httpAddr := configuration.GetString("server.http_addr_internal")
+	if httpAddr == "" {
+		return "", fmt.Errorf("http listen address required for internal server")
+	}
+
+	return httpAddr, nil
+}
+
 // get the address for the HTTP server, and parses the optional TLS
 // configuration for the server - if no TLS configuration is specified,
 // TLS is not enabled.
@@ -279,8 +289,14 @@ func parseServerConfig(configFilePath string, hRegister healthRegister, doBootst
 		return nil, server.Config{}, err
 	}
 
+	httpAddrInternal, err := getAddrInternal(config)
+	if err != nil {
+		return nil, server.Config{}, err
+	}
+
 	return ctx, server.Config{
 		Addr:                         httpAddr,
+		AddrInternal:                 httpAddrInternal,
 		TLSConfig:                    tlsConfig,
 		Trust:                        trust,
 		AuthMethod:                   config.GetString("auth.type"),

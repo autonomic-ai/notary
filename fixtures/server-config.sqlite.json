@@ -1,6 +1,7 @@
 {
 	"server": {
 		"http_addr": ":4443",
+		"http_addr_internal": ":8081",
 		"tls_key_file": "./notary-server.key",
 		"tls_cert_file": "./notary-server.crt"
 	},

@@ -30,8 +30,9 @@ func TestRunBadAddr(t *testing.T) {
 	err := Run(
 		context.Background(),
 		Config{
-			Addr:  "testAddr",
-			Trust: signed.NewEd25519(),
+			Addr:         "testAddr",
+			AddrInternal: "testAddrInternal",
+			Trust:        signed.NewEd25519(),
 		},
 	)
 	require.Error(t, err, "Passed bad addr, Run should have failed")
@@ -44,8 +45,9 @@ func TestRunReservedPort(t *testing.T) {
 	err := Run(
 		ctx,
 		Config{
-			Addr:  "localhost:80",
-			Trust: signed.NewEd25519(),
+			Addr:         "localhost:80",
+			AddrInternal: "localhost:8081",
+			Trust:        signed.NewEd25519(),
 		},
 	)
 
@@ -149,8 +151,7 @@ func TestRepoPrefixDoesNotMatch(t *testing.T) {
 }
 
 func TestMetricsEndpoint(t *testing.T) {
-	handler := RootHandler(context.Background(), nil, signed.NewEd25519(),
-		nil, nil, nil)
+	handler := InternalHandler()
 	ts := httptest.NewServer(handler)
 	defer ts.Close()
 
