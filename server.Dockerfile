@@ -2,6 +2,9 @@ FROM golang:1.14.1-alpine
 
 RUN apk add --update git gcc libc-dev
 
+RUN addgroup --system notary && adduser --system --ingroup notary --uid 999 notary
+USER notary
+
 ENV GO111MODULE=on
 
 ARG MIGRATE_VER=v4.6.2
@@ -15,8 +18,6 @@ COPY . /go/src/${NOTARYPKG}
 
 WORKDIR /go/src/${NOTARYPKG}
 
-RUN chmod 0600 ./fixtures/database/*
-
 ENV SERVICE_NAME=notary_server
 EXPOSE 4443
 
@@ -24,7 +25,11 @@ EXPOSE 4443
 RUN go install \
     -tags pkcs11 \
     -ldflags "-w -X ${NOTARYPKG}/version.GitCommit=`git rev-parse --short HEAD` -X ${NOTARYPKG}/version.NotaryVersion=`cat NOTARY_VERSION`" \
-    ${NOTARYPKG}/cmd/notary-server && apk del git gcc libc-dev && rm -rf /var/cache/apk/*
+    ${NOTARYPKG}/cmd/notary-server
 
+USER root
+RUN apk del git gcc libc-dev && rm -rf /var/cache/apk/*
+
+USER notary
 ENTRYPOINT [ "notary-server" ]
 CMD [ "-config=fixtures/server-config-local.json" ]
