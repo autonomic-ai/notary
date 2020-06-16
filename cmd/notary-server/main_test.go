@@ -11,16 +11,16 @@ import (
 	"testing"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/server/storage"
+	"github.com/autonomic-ai/notary/signer/client"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/utils"
 	"github.com/docker/distribution/health"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/server/storage"
-	"github.com/theupdateframework/notary/signer/client"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/utils"
 )
 
 const (

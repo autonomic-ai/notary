@@ -12,12 +12,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/passphrase"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/passphrase"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 // Once a fixture is read in, ensure that it's valid by making sure the expiry

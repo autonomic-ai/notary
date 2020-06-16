@@ -5,9 +5,9 @@ import (
 	"encoding/pem"
 	"fmt"
 
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/utils"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/utils"
 )
 
 // CreateOrAddKey creates a new key in case of ECDSA or ED25519 inside the cryptoservice with the given role and gun

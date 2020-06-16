@@ -7,11 +7,11 @@ import (
 	"os"
 	"time"
 
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/docker/distribution/registry/client/auth"
 	"github.com/docker/distribution/registry/client/auth/challenge"
 	"github.com/docker/distribution/registry/client/transport"
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 func Example() {

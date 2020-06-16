@@ -12,6 +12,14 @@ import (
 	"testing"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/cryptoservice"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/testutils"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/cloudflare/cfssl/config"
 	"github.com/cloudflare/cfssl/csr"
 	"github.com/cloudflare/cfssl/helpers"
@@ -21,14 +29,6 @@ import (
 	"github.com/docker/go/canonical/json"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/cryptoservice"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/testutils"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 type SignedRSARootTemplate struct {

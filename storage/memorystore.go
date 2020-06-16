@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/utils"
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/utils"
 )
 
 // NewMemoryStore returns a MetadataStore that operates entirely in memory.

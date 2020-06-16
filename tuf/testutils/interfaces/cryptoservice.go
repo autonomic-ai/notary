@@ -4,11 +4,11 @@ import (
 	"crypto/rand"
 	"testing"
 
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	testutils "github.com/autonomic-ai/notary/tuf/testutils/keys"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	testutils "github.com/theupdateframework/notary/tuf/testutils/keys"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 // These are tests that can be used to test a cryptoservice

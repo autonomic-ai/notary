@@ -13,12 +13,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/passphrase"
+	"github.com/autonomic-ai/notary/server/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/docker/go-connections/tlsconfig"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/passphrase"
-	"github.com/theupdateframework/notary/server/storage"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 // the default location for the config file is in ~/.notary/config.json - even if it doesn't exist.

@@ -5,15 +5,15 @@ import (
 	"sort"
 	"time"
 
+	"github.com/autonomic-ai/notary/cryptoservice"
+	"github.com/autonomic-ai/notary/passphrase"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/testutils/keys"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/docker/go/canonical/json"
-	"github.com/theupdateframework/notary/cryptoservice"
-	"github.com/theupdateframework/notary/passphrase"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/testutils/keys"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 // CreateKey creates a new key inside the cryptoservice for the given role and gun,

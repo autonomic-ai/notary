@@ -5,8 +5,8 @@ import (
 
 	"golang.org/x/net/context"
 
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/storage"
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/storage"
 )
 
 func bootstrap(ctx context.Context) error {

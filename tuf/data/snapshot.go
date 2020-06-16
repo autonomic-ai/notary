@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"fmt"
 
+	"github.com/autonomic-ai/notary"
 	"github.com/docker/go/canonical/json"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary"
 )
 
 // SignedSnapshot is a fully unpacked snapshot.json

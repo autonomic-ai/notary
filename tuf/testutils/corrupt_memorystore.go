@@ -1,8 +1,8 @@
 package testutils
 
 import (
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf/data"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
 )
 
 // CorruptingMemoryStore corrupts all data returned by GetMeta

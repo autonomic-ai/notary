@@ -17,7 +17,7 @@ RUN useradd -ms /bin/bash notary \
 	&& pip install codecov \
 	&& go get golang.org/x/lint/golint github.com/fzipp/gocyclo github.com/client9/misspell/cmd/misspell github.com/gordonklaus/ineffassign github.com/securego/gosec/cmd/gosec/...
 
-ENV NOTARYDIR /go/src/github.com/theupdateframework/notary
+ENV NOTARYDIR /go/src/github.com/autonomic-ai/notary
 ENV GO111MODULE=on
 ENV GOFLAGS=-mod=vendor
 

@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/theupdateframework/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/data"
 )
 
 type key struct {

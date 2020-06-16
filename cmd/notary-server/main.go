@@ -10,11 +10,11 @@ import (
 	"os/signal"
 	"runtime"
 
+	"github.com/autonomic-ai/notary/server"
+	"github.com/autonomic-ai/notary/utils"
+	"github.com/autonomic-ai/notary/version"
 	"github.com/docker/distribution/health"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary/server"
-	"github.com/theupdateframework/notary/utils"
-	"github.com/theupdateframework/notary/version"
 )
 
 // DebugAddress is the debug server address to listen on

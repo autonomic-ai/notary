@@ -11,10 +11,10 @@ import (
 	"testing"
 	"time"
 
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 	"github.com/stretchr/testify/require"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
 )
 
 // creates a new swizzler with 3 delegation targets (and only 2 metadata files

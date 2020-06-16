@@ -7,11 +7,11 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.org/x/net/context"
 
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/server/errors"
-	"github.com/theupdateframework/notary/server/storage"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/server/errors"
+	"github.com/autonomic-ai/notary/server/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 )
 
 func TestGetMaybeServerSignedNoCrypto(t *testing.T) {

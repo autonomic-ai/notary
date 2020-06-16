@@ -3,13 +3,13 @@ package tuf
 import (
 	"fmt"
 
+	"github.com/autonomic-ai/notary"
 	"github.com/docker/go/canonical/json"
-	"github.com/theupdateframework/notary"
 
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/utils"
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/utils"
 )
 
 // ErrBuildDone is returned when any functions are called on RepoBuilder, and it

@@ -8,13 +8,13 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/passphrase"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/version"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/passphrase"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/version"
 )
 
 const (

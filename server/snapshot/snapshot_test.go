@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/autonomic-ai/notary/server/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/testutils"
 	"github.com/docker/go/canonical/json"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/server/storage"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/testutils"
 )
 
 func TestSnapshotExpired(t *testing.T) {

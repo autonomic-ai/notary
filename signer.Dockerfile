@@ -11,7 +11,7 @@ ARG MIGRATE_VER=v4.6.2
 RUN go get -tags 'mysql postgres file' github.com/golang-migrate/migrate/v4/cli@${MIGRATE_VER} && mv /go/bin/cli /go/bin/migrate
 
 ENV GOFLAGS=-mod=vendor
-ENV NOTARYPKG github.com/theupdateframework/notary
+ENV NOTARYPKG github.com/autonomic-ai/notary
 
 # Copy the local repo to the expected go path
 COPY . /go/src/${NOTARYPKG}

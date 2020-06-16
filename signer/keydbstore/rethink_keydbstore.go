@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/storage/rethinkdb"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf/data"
 	jose "github.com/dvsekhvalnov/jose2go"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/storage/rethinkdb"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf/data"
 	gorethink "gopkg.in/rethinkdb/rethinkdb-go.v6"
 )
 

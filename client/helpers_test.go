@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/autonomic-ai/notary/client/changelist"
+	"github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/testutils"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/client/changelist"
-	"github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/testutils"
 )
 
 func TestApplyTargetsChange(t *testing.T) {

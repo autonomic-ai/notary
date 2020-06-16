@@ -8,7 +8,7 @@ ARG MIGRATE_VER=v4.6.2
 RUN go get -tags 'mysql postgres file' github.com/golang-migrate/migrate/v4/cli@${MIGRATE_VER} && mv /go/bin/cli /go/bin/migrate
 
 ENV GOFLAGS=-mod=vendor
-ENV NOTARYPKG github.com/theupdateframework/notary
+ENV NOTARYPKG github.com/autonomic-ai/notary
 
 # Copy the local repo to the expected go path
 COPY . /go/src/${NOTARYPKG}
@@ -30,8 +30,8 @@ RUN mkdir -p /usr/bin /var/lib && ln -s /bin/env /usr/bin/env
 COPY --from=build-env /go/bin/notary-signer /usr/bin/notary-signer
 COPY --from=build-env /go/bin/migrate /usr/bin/migrate
 COPY --from=build-env /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
-COPY --from=build-env /go/src/github.com/theupdateframework/notary/migrations/ /var/lib/notary/migrations
-COPY --from=build-env /go/src/github.com/theupdateframework/notary/fixtures /var/lib/notary/fixtures
+COPY --from=build-env /go/src/github.com/autonomic-ai/notary/migrations/ /var/lib/notary/migrations
+COPY --from=build-env /go/src/github.com/autonomic-ai/notary/fixtures /var/lib/notary/fixtures
 RUN chmod 0600 /var/lib/notary/fixtures/database/*
 
 WORKDIR /var/lib/notary

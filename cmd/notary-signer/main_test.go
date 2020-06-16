@@ -8,16 +8,16 @@ import (
 	"os"
 	"testing"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/signer"
+	"github.com/autonomic-ai/notary/signer/keydbstore"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/testutils"
 	"github.com/jinzhu/gorm"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/signer"
-	"github.com/theupdateframework/notary/signer/keydbstore"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/testutils"
 )
 
 const (

@@ -10,12 +10,12 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/bugsnag/bugsnag-go"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 const envPrefix = "NOTARY_TESTING_ENV_PREFIX"

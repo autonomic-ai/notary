@@ -10,11 +10,11 @@ import (
 	"os/signal"
 	"runtime"
 
+	"github.com/autonomic-ai/notary/utils"
+	"github.com/autonomic-ai/notary/version"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary/utils"
-	"github.com/theupdateframework/notary/version"
 )
 
 const (

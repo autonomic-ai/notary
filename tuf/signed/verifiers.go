@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary/tuf/data"
 	"golang.org/x/crypto/ed25519"
 )
 

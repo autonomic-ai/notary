@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf/data"
 	jose "github.com/dvsekhvalnov/jose2go"
 	"github.com/jinzhu/gorm"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 // Constants

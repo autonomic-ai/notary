@@ -4,16 +4,16 @@ import (
 	"encoding/hex"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 	"github.com/docker/go/canonical/json"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
 
+	"github.com/autonomic-ai/notary/server/snapshot"
+	"github.com/autonomic-ai/notary/server/storage"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary/server/snapshot"
-	"github.com/theupdateframework/notary/server/storage"
 )
 
 // GetOrCreateTimestampKey returns the timestamp key for the gun. It uses the store to

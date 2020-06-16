@@ -1,6 +1,6 @@
 FROM golang:1.14.1-alpine
 
-ENV NOTARYPKG github.com/theupdateframework/notary
+ENV NOTARYPKG github.com/autonomic-ai/notary
 ENV GO111MODULE=on
 
 # Copy the local repo to the expected go path

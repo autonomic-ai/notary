@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 // ErrSigVerifyFail - signature verification failed

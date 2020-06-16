@@ -7,17 +7,17 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/autonomic-ai/notary/server/errors"
+	"github.com/autonomic-ai/notary/server/handlers"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/utils"
 	"github.com/docker/distribution/health"
 	"github.com/docker/distribution/registry/api/errcode"
 	"github.com/docker/distribution/registry/auth"
 	"github.com/gorilla/mux"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary/server/errors"
-	"github.com/theupdateframework/notary/server/handlers"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/utils"
 	"golang.org/x/net/context"
 )
 

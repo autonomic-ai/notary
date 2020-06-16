@@ -5,12 +5,12 @@ import (
 
 	"github.com/sirupsen/logrus"
 
+	"github.com/autonomic-ai/notary/server/storage"
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 	"github.com/docker/go/canonical/json"
-	"github.com/theupdateframework/notary/server/storage"
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
 )
 
 // GetOrCreateSnapshotKey either creates a new snapshot key, or returns

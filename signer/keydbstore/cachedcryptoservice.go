@@ -3,8 +3,8 @@ package keydbstore
 import (
 	"sync"
 
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 )
 
 type cachedKeyService struct {

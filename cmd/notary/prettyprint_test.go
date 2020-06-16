@@ -11,12 +11,12 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/autonomic-ai/notary/client"
+	"github.com/autonomic-ai/notary/passphrase"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/client"
-	"github.com/theupdateframework/notary/passphrase"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 // --- tests for pretty printing keys ---

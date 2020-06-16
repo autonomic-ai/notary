@@ -6,12 +6,12 @@ import (
 	"os"
 	"strings"
 
+	"github.com/autonomic-ai/notary"
+	notaryclient "github.com/autonomic-ai/notary/client"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/theupdateframework/notary"
-	notaryclient "github.com/theupdateframework/notary/client"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 var cmdDelegationTemplate = usageTemplate{

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/theupdateframework/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/data"
 )
 
 // ErrInsufficientSignatures - can not create enough signatures on a piece of

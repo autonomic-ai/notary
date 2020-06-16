@@ -11,13 +11,13 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.org/x/net/context"
 
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/server/storage"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/testutils"
-	"github.com/theupdateframework/notary/tuf/validation"
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/server/storage"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/testutils"
+	"github.com/autonomic-ai/notary/tuf/validation"
 )
 
 // Ensures that the httpstore can interpret the errors returned from the server

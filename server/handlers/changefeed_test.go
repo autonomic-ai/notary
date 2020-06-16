@@ -4,11 +4,11 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/server/storage"
 	ctxu "github.com/docker/distribution/context"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/server/storage"
 )
 
 type changefeedArgs struct {
