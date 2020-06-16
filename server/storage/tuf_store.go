@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/docker/go/canonical/json"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 // TUFMetaStorage wraps a MetaStore in order to walk the TUF tree for GetCurrent in a consistent manner,

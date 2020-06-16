@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/autonomic-ai/notary"
 	"github.com/docker/go/canonical/json"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
 )
 
 func TestGenerateFileMetaDefault(t *testing.T) {

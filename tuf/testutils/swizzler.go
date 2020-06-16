@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/autonomic-ai/notary/cryptoservice"
+	"github.com/autonomic-ai/notary/passphrase"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 	"github.com/docker/go/canonical/json"
-	"github.com/theupdateframework/notary/cryptoservice"
-	"github.com/theupdateframework/notary/passphrase"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
 )
 
 // ErrNoKeyForRole returns an error when the cryptoservice provided to

@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/utils"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/utils"
 )
 
 // GenerateCertificate generates an X509 Certificate from a template, given a GUN and validity interval

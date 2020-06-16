@@ -10,13 +10,13 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/theupdateframework/notary/passphrase"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/testutils/interfaces"
-	testutils "github.com/theupdateframework/notary/tuf/testutils/keys"
-	"github.com/theupdateframework/notary/tuf/utils"
+	"github.com/autonomic-ai/notary/passphrase"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/testutils/interfaces"
+	testutils "github.com/autonomic-ai/notary/tuf/testutils/keys"
+	"github.com/autonomic-ai/notary/tuf/utils"
 )
 
 var algoToSigType = map[string]data.SigAlgorithm{

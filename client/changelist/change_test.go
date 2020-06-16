@@ -3,9 +3,9 @@ package changelist
 import (
 	"testing"
 
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
 )
 
 func TestTUFDelegation(t *testing.T) {

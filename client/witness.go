@@ -1,9 +1,9 @@
 package client
 
 import (
-	"github.com/theupdateframework/notary/client/changelist"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
+	"github.com/autonomic-ai/notary/client/changelist"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
 )
 
 // Witness creates change objects to witness (i.e. re-sign) the given

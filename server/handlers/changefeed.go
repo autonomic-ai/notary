@@ -10,9 +10,9 @@ import (
 	"github.com/gorilla/mux"
 	"golang.org/x/net/context"
 
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/server/errors"
-	"github.com/theupdateframework/notary/server/storage"
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/server/errors"
+	"github.com/autonomic-ai/notary/server/storage"
 )
 
 type changefeedResponse struct {

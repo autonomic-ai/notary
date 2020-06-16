@@ -5,9 +5,9 @@ package main
 import (
 	"errors"
 
-	"github.com/theupdateframework/notary"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/trustmanager"
+	"github.com/autonomic-ai/notary"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/trustmanager"
 )
 
 func getYubiStore(fileKeyStore trustmanager.KeyStore, ret notary.PassRetriever) (trustmanager.KeyStore, error) {

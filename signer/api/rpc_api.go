@@ -4,16 +4,16 @@ import (
 	"crypto/rand"
 	"fmt"
 
+	"github.com/autonomic-ai/notary/signer"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf/data"
 	ctxu "github.com/docker/distribution/context"
-	"github.com/theupdateframework/notary/signer"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf/data"
 	"golang.org/x/net/context"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
-	pb "github.com/theupdateframework/notary/proto"
+	pb "github.com/autonomic-ai/notary/proto"
 )
 
 //KeyManagementServer implements the KeyManagementServer grpc interface

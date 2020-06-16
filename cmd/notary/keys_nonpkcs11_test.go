@@ -8,15 +8,15 @@ import (
 	"os"
 	"testing"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/cryptoservice"
+	"github.com/autonomic-ai/notary/passphrase"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/cryptoservice"
-	"github.com/theupdateframework/notary/passphrase"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 func TestImportKeysNoYubikey(t *testing.T) {

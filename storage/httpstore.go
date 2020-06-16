@@ -3,7 +3,7 @@
 // - Response bodies for error codes should be unmarshallable as:
 //   {"errors": [{..., "detail": <serialized validation error>}]}
 //   else validation error details, etc. will be unparsable.  The errors
-//   should have a github.com/theupdateframework/notary/tuf/validation/SerializableError
+//   should have a github.com/autonomic-ai/notary/tuf/validation/SerializableError
 //   in the Details field.
 //   If writing your own server, please have a look at
 //   github.com/docker/distribution/registry/api/errcode
@@ -22,10 +22,10 @@ import (
 	"net/url"
 	"path"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/validation"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/validation"
 )
 
 const (

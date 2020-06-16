@@ -6,11 +6,11 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/autonomic-ai/notary"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 type keyInfoMap map[string]KeyInfo

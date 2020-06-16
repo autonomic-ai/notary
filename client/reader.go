@@ -3,11 +3,11 @@ package client
 import (
 	"fmt"
 
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	canonicaljson "github.com/docker/go/canonical/json"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 // Target represents a simplified version of the data TUF operates on, so external

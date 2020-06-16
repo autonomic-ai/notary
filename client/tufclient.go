@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"regexp"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/cryptoservice"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/cryptoservice"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
 )
 
 // tufClient is a usability wrapper around a raw TUF repo

@@ -6,10 +6,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/docker/go/canonical/json"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 // Various basic signing errors

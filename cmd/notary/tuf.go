@@ -17,6 +17,15 @@ import (
 	"strings"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	notaryclient "github.com/autonomic-ai/notary/client"
+	"github.com/autonomic-ai/notary/cryptoservice"
+	"github.com/autonomic-ai/notary/passphrase"
+	"github.com/autonomic-ai/notary/trustmanager"
+	"github.com/autonomic-ai/notary/trustpinning"
+	"github.com/autonomic-ai/notary/tuf/data"
+	tufutils "github.com/autonomic-ai/notary/tuf/utils"
+	"github.com/autonomic-ai/notary/utils"
 	"github.com/docker/distribution/registry/client/auth"
 	"github.com/docker/distribution/registry/client/auth/challenge"
 	"github.com/docker/distribution/registry/client/transport"
@@ -25,15 +34,6 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/theupdateframework/notary"
-	notaryclient "github.com/theupdateframework/notary/client"
-	"github.com/theupdateframework/notary/cryptoservice"
-	"github.com/theupdateframework/notary/passphrase"
-	"github.com/theupdateframework/notary/trustmanager"
-	"github.com/theupdateframework/notary/trustpinning"
-	"github.com/theupdateframework/notary/tuf/data"
-	tufutils "github.com/theupdateframework/notary/tuf/utils"
-	"github.com/theupdateframework/notary/utils"
 )
 
 var cmdTUFListTemplate = usageTemplate{
@@ -919,7 +919,7 @@ func tokenAuth(trustServerURL string, baseTransport *http.Transport, gun data.GU
 	}
 	subPath, err := url.Parse(path.Join(endpoint.Path, "/v2") + "/")
 	if err != nil {
-		return nil, fmt.Errorf("Failed to parse v2 subpath. This error should not have been reached. Please report it as an issue at https://github.com/theupdateframework/notary/issues: %s", err.Error())
+		return nil, fmt.Errorf("Failed to parse v2 subpath. This error should not have been reached. Please report it as an issue at https://github.com/autonomic-ai/notary/issues: %s", err.Error())
 	}
 	endpoint = endpoint.ResolveReference(subPath)
 	req, err := http.NewRequest("GET", endpoint.String(), nil)

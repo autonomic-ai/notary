@@ -6,13 +6,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/autonomic-ai/notary/client/changelist"
+	store "github.com/autonomic-ai/notary/storage"
+	"github.com/autonomic-ai/notary/tuf"
+	"github.com/autonomic-ai/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/signed"
+	"github.com/autonomic-ai/notary/tuf/utils"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary/client/changelist"
-	store "github.com/theupdateframework/notary/storage"
-	"github.com/theupdateframework/notary/tuf"
-	"github.com/theupdateframework/notary/tuf/data"
-	"github.com/theupdateframework/notary/tuf/signed"
-	"github.com/theupdateframework/notary/tuf/utils"
 )
 
 // Use this to initialize remote HTTPStores from the config settings

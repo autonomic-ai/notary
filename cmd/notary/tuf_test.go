@@ -12,11 +12,11 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/docker/distribution/registry/client/auth"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 // TestImportRootCert does the following

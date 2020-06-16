@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"fmt"
 
+	"github.com/autonomic-ai/notary"
 	"github.com/docker/go/canonical/json"
-	"github.com/theupdateframework/notary"
 )
 
 // SignedTimestamp is a fully unpacked timestamp.json

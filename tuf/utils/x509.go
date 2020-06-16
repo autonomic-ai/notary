@@ -16,9 +16,9 @@ import (
 	"math/big"
 	"time"
 
+	"github.com/autonomic-ai/notary"
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/sirupsen/logrus"
-	"github.com/theupdateframework/notary"
-	"github.com/theupdateframework/notary/tuf/data"
 	"golang.org/x/crypto/ed25519"
 )
 

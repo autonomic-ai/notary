@@ -8,10 +8,10 @@ import (
 	"os"
 	"testing"
 
+	"github.com/autonomic-ai/notary/storage/rethinkdb"
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/docker/go-connections/tlsconfig"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/storage/rethinkdb"
-	"github.com/theupdateframework/notary/tuf/data"
 	gorethink "gopkg.in/rethinkdb/rethinkdb-go.v6"
 )
 

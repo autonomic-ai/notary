@@ -1,7 +1,7 @@
 package storage
 
 import (
-	"github.com/theupdateframework/notary/tuf/data"
+	"github.com/autonomic-ai/notary/tuf/data"
 )
 
 // ErrOffline is used to indicate we are operating offline

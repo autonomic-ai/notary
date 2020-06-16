@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/autonomic-ai/notary/tuf/data"
 	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/require"
-	"github.com/theupdateframework/notary/tuf/data"
 )
 
 func SetupSQLDB(t *testing.T, dbtype, dburl string) *SQLStorage {
